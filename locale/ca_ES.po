@@ -1,0 +1,59 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.template,product_customer:"
+msgid "Customers"
+msgstr "Clients"
+
+msgctxt "field:sale.line,customer_product_name:"
+msgid "Customer Product Name"
+msgstr "Nom del producte pel client"
+
+msgctxt "field:sale.product_customer,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:sale.product_customer,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.product_customer,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:sale.product_customer,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:sale.product_customer,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:sale.product_customer,name:"
+msgid "Name"
+msgstr "Nom del camp"
+
+msgctxt "field:sale.product_customer,party:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:sale.product_customer,product:"
+msgid "Product"
+msgstr "Productes"
+
+msgctxt "field:sale.product_customer,rec_name:"
+msgid "Name"
+msgstr "Nom del camp"
+
+msgctxt "field:sale.product_customer,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:sale.product_customer,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "model:sale.product_customer,name:"
+msgid "Product Customer"
+msgstr "Producte del client"

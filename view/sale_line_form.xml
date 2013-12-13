@@ -1,0 +1,7 @@
+<data>
+    <xpath expr="/form/notebook/page/field[@name='product']"
+        position="after">
+        <label name="customer_product_name"/>
+        <field name="customer_product_name"/>
+    </xpath>
+</data>

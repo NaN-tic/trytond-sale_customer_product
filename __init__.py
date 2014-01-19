@@ -2,12 +2,12 @@
 #copyright notices and license terms.
 
 from trytond.pool import Pool
-from .template import *
+from .product import *
+from .sale import *
 
 def register():
     Pool.register(
         Template,
-        Product,
         ProductCustomer,
         SaleLine,
         module='sale_customer_product', type_='model')

@@ -3,19 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-
-        <record model="ir.ui.view" id="product_customer_view_form">
-            <field name="model">sale.product_customer</field>
-            <field name="type">form</field>
-            <field name="name">product_customer_form</field>
-        </record>
-        <record model="ir.ui.view" id="product_customer_view_tree">
-            <field name="model">sale.product_customer</field>
-            <field name="type">tree</field>
-            <field name="priority" eval="10"/>
-            <field name="name">product_customer_tree</field>
-        </record>
-
         <record model="ir.rule.group" id="rule_group_product_customer">
             <field name="model" search="[('model', '=', 'sale.product_customer')]"/>
             <field name="global_p" eval="True"/>
@@ -24,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_product_customer"/>
         </record>
-        
+
         <record model="ir.ui.view" id="sale_line_view_form">
             <field name="model">sale.line</field>
             <field name="type">form</field>

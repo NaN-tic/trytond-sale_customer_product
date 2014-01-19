@@ -245,7 +245,7 @@ Sale 5 products::
     >>> sale.state
     u'processing'
     >>> sale.reload()
-    >>> sale_line.customer_product_name
+    >>> sale_line.description
     u'[1111] Customer 1 Product'
 
 Sale 5 products::
@@ -276,5 +276,3 @@ Sale 5 products::
     >>> sale.state
     u'processing'
     >>> sale.reload()
-    >>> sale_line.customer_product_name
-    ''

@@ -15,6 +15,7 @@ __metaclass__ = PoolMeta
 class SaleLine:
     __name__ = 'sale.line'
 
+    @fields.depends('product', 'sale')
     def on_change_product(self):
         ProductCustomer = Pool().get('sale.product_customer')
         res = super(SaleLine, self).on_change_product()

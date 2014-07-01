@@ -2,13 +2,29 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.template,product_customer:"
+msgctxt "error:sale.product_customer:"
+msgid "Product and party must be unique per company."
+msgstr "Producte i tercer han de ser únics per companyia."
+
+msgctxt "field:product.product,customer_code:"
+msgid "Customer Code"
+msgstr "Codi del client"
+
+msgctxt "field:product.product,customer_name:"
+msgid "Customer Name"
+msgstr "Nom del client"
+
+msgctxt "field:product.template,customer_code:"
+msgid "Customer Code"
+msgstr "Codi del client"
+
+msgctxt "field:product.template,customer_name:"
+msgid "Customer Name"
+msgstr "Nom del client"
+
+msgctxt "field:product.template,product_customers:"
 msgid "Customers"
 msgstr "Clients"
-
-msgctxt "field:sale.line,customer_product_name:"
-msgid "Customer Product Name"
-msgstr "Nom del producte pel client"
 
 msgctxt "field:sale.product_customer,code:"
 msgid "Code"
@@ -57,3 +73,7 @@ msgstr "Usuari modificació"
 msgctxt "model:sale.product_customer,name:"
 msgid "Product Customer"
 msgstr "Producte del client"
+
+msgctxt "view:sale.product_customer:"
+msgid "Product Customer"
+msgstr "Productes i clients"

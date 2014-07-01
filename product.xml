@@ -31,5 +31,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="product.template_view_form"/>
             <field name="name">template_form</field>
         </record>
+
+        <record model="ir.ui.view" id="product_customer_view_form">
+            <field name="model">sale.product_customer</field>
+            <field name="type">form</field>
+            <field name="name">product_customer_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_customer_view_tree">
+            <field name="model">sale.product_customer</field>
+            <field name="type">tree</field>
+            <field name="name">product_customer_tree</field>
+        </record>
+
     </data>
 </tryton>

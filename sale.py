@@ -1,12 +1,10 @@
 #This file is part of sale_customer_product module for Tryton.  The COPYRIGHT
 #file at the top level of this repository contains the full copyright
 #notices and license terms.
-import datetime
-from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Eval, If
+from trytond.model import fields
+from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond import backend
 
 __all__ = ['SaleLine']
 __metaclass__ = PoolMeta
@@ -14,6 +12,11 @@ __metaclass__ = PoolMeta
 
 class SaleLine:
     __name__ = 'sale.line'
+
+    @classmethod
+    def __setup__(cls):
+        super(SaleLine, cls).__setup__()
+        cls.product.context['sale_customer'] = Eval('_parent_sale', {}).get('party')
 
     @fields.depends('product', 'sale')
     def on_change_product(self):

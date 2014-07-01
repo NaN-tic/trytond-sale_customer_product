@@ -32,6 +32,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">template_form</field>
         </record>
 
+        <record model="ir.ui.view" id="product_view_list_sale_line">
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="inherit" ref="sale.product_view_list_sale_line"/>
+            <field name="domain" eval="''"/>
+            <field name="name">product_list_sale_line</field>
+        </record>
+
         <record model="ir.ui.view" id="product_customer_view_form">
             <field name="model">sale.product_customer</field>
             <field name="type">form</field>

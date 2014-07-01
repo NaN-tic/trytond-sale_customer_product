@@ -3,10 +3,10 @@
 #notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
-__all__ = ['Template', 'ProductCustomer']
+__all__ = ['Template', 'Product', 'ProductCustomer']
 __metaclass__ = PoolMeta
 
 
@@ -20,6 +20,105 @@ class Template:
                 | ~Eval('context', {}).get('company')),
             },
         depends=['active', 'salable'])
+
+    customer_code = fields.Function(fields.Char('Customer Code'),
+        'get_customer_fields', searcher='search_customer_field')
+    customer_name = fields.Function(fields.Char('Customer Name'),
+        'get_customer_fields', searcher='search_customer_field')
+
+    @classmethod
+    def get_customer_fields(cls, templates, names):
+        ProductCustomer = Pool().get('sale.product_customer')
+
+        template_ids = [x.id for x in templates]
+        customer_code = dict((x, None) for x in template_ids)
+        customer_name = dict((x, None) for x in template_ids)
+        sale_customer = Transaction().context.get('sale_customer')
+        if sale_customer:
+            pcs = ProductCustomer.search([
+                    ('product', 'in', template_ids),
+                    ('party', '=', sale_customer),
+                    ])
+            for pc in pcs:
+                customer_code[pc.product.id] = pc.code
+                customer_name[pc.product.id] = pc.name
+
+        res = {}
+        if 'customer_code' in names:
+            res['customer_code'] = customer_code
+        if 'customer_name' in names:
+            res['customer_name'] = customer_name
+        return res
+
+    @classmethod
+    def search_customer_field(cls, name, clause):
+        ProductCustomer = Pool().get('sale.product_customer')
+        field_name = name.replace('customer_', '')
+        sale_customer = Transaction().context.get('sale_customer')
+        if sale_customer:
+            pcs = ProductCustomer.search([
+                    (field_name,) + tuple(clause[1:]),
+                    ('party', '=', sale_customer),
+                    ])
+            res = [
+                ('product_customers', 'in', [x.id for x in pcs]),
+                ]
+        else:
+            res = [
+                ('product_customers.%s' % field_name,) + tuple(clause[1:]),
+                ]
+        return res
+
+
+class Product:
+    __name__ = 'product.product'
+    customer_code = fields.Function(fields.Char('Customer Code'),
+        'get_customer_fields', searcher='search_customer_field')
+    customer_name = fields.Function(fields.Char('Customer Name'),
+        'get_customer_fields', searcher='search_customer_field')
+
+    def get_customer_fields(self, name):
+        return self.template.customer_code
+
+    def get_customer_fields(self, name):
+        return self.template.customer_code
+
+    @classmethod
+    def get_customer_fields(cls, products, names):
+        Template = Pool().get('product.template')
+
+        product_ids = [x.id for x in products]
+        customer_code = dict((x, None) for x in product_ids)
+        customer_name = dict((x, None) for x in product_ids)
+        if Transaction().context.get('sale_customer'):
+            template_ids = [product.template.id for product in products]
+            templates = Template.browse(template_ids)
+            tcodes = dict([(x.id, x.customer_code) for x in templates])
+            tnames = dict([(x.id, x.customer_name) for x in templates])
+            for product in products:
+                customer_code[product.id] = tcodes[product.template.id]
+                customer_name[product.id] = tnames[product.template.id]
+
+        res = {}
+        if 'customer_code' in names:
+            res['customer_code'] = customer_code
+        if 'customer_name' in names:
+            res['customer_name'] = customer_name
+        return res
+
+    @classmethod
+    def search_customer_field(cls, name, clause):
+        return [('template.%s' % name,) + tuple(clause[1:])]
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        res = super(Product, cls).search_rec_name(name, clause)
+        if Transaction().context.get('sale_customer'):
+            res += [
+                ('customer_code',) + tuple(clause[1:]),
+                ('customer_name',) + tuple(clause[1:]),
+                ]
+        return res
 
 
 class ProductCustomer(ModelSQL, ModelView):
@@ -39,6 +138,15 @@ class ProductCustomer(ModelSQL, ModelView):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ])
+
+    @classmethod
+    def __setup__(cls):
+        super(ProductCustomer, cls).__setup__()
+        cls._sql_constraints += [
+            ('product_party_company_uniq', 'UNIQUE(product, party, company)',
+                'Product and party must be unique per company.'),
+            ]
+
 
     @staticmethod
     def default_company():

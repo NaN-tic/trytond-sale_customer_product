@@ -1,7 +1,7 @@
 #This file is part of sale_customer_product module for Tryton.  The COPYRIGHT
 #file at the top level of this repository contains the full copyright
 #notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.pyson import Eval, If
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
@@ -142,11 +142,12 @@ class ProductCustomer(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ProductCustomer, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('product_party_company_uniq', 'UNIQUE(product, party, company)',
+            ('product_party_company_uniq',
+                Unique(t, t.product, t.party, t.company),
                 'Product and party must be unique per company.'),
             ]
-
 
     @staticmethod
     def default_company():

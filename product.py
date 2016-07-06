@@ -77,12 +77,6 @@ class Product:
     customer_name = fields.Function(fields.Char('Customer Name'),
         'get_customer_fields', searcher='search_customer_field')
 
-    def get_customer_fields(self, name):
-        return self.template.customer_code
-
-    def get_customer_fields(self, name):
-        return self.template.customer_code
-
     @classmethod
     def get_customer_fields(cls, products, names):
         Template = Pool().get('product.template')

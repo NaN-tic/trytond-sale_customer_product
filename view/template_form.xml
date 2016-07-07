@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <data>
-    <xpath expr="/form/notebook/page[@id='customers']/field[@name='delivery_time']" position="after">
+    <xpath expr="/form/notebook/page[@id='customers']/field[@name='lead_time']" position="after">
         <field name="product_customers" colspan="4"/>
     </xpath>
 </data>

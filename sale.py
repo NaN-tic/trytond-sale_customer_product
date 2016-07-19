@@ -1,6 +1,6 @@
-#This file is part of sale_customer_product module for Tryton.  The COPYRIGHT
-#file at the top level of this repository contains the full copyright
-#notices and license terms.
+# This file is part of sale_customer_product module for Tryton.  The COPYRIGHT
+# file at the top level of this repository contains the full copyright
+# notices and license terms.
 from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
@@ -16,7 +16,8 @@ class SaleLine:
     @classmethod
     def __setup__(cls):
         super(SaleLine, cls).__setup__()
-        cls.product.context['sale_customer'] = Eval('_parent_sale', {}).get('party')
+        cls.product.context['sale_customer'] = Eval('_parent_sale',
+            {}).get('party')
 
     @fields.depends('product', 'sale')
     def on_change_product(self):

@@ -117,7 +117,6 @@ class Product:
 
 class ProductCustomer(ModelSQL, ModelView):
     'Product Customer'
-
     __name__ = 'sale.product_customer'
 
     product = fields.Many2One('product.template', 'Product', required=True,

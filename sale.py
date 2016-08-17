@@ -16,7 +16,8 @@ class SaleLine:
     @classmethod
     def __setup__(cls):
         super(SaleLine, cls).__setup__()
-        cls.product.context['sale_customer'] = Eval('_parent_sale', {}).get('party')
+        cls.product.context['sale_customer'] = Eval('_parent_sale',
+            {}).get('party')
 
     @fields.depends('product', 'sale')
     def on_change_product(self):

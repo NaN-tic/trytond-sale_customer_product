@@ -21,14 +21,17 @@ class SaleLine:
     @fields.depends('product', 'sale')
     def on_change_product(self):
         ProductCustomer = Pool().get('sale.product_customer')
+
         res = super(SaleLine, self).on_change_product()
-        if not self.product:
+
+        if not self.product or not self.sale or not self.sale.party:
             return res
+
         party_context = {}
-        if self.sale and self.sale.party:
-            party = self.sale.party
-            if party.lang:
-                party_context['language'] = party.lang.code
+        party = self.sale.party
+        if party.lang:
+            party_context['language'] = party.lang.code
+
         with Transaction().set_context(party_context):
             products = ProductCustomer.search([
                     ('product', '=', self.product.template.id),

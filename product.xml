@@ -45,12 +45,30 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">product_customer_form</field>
         </record>
-
         <record model="ir.ui.view" id="product_customer_view_tree">
             <field name="model">sale.product_customer</field>
             <field name="type">tree</field>
             <field name="name">product_customer_tree</field>
         </record>
 
+        <record model="ir.action.act_window" id="act_sale_product_customer">
+            <field name="name">Customer Products</field>
+            <field name="res_model">sale.product_customer</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_product_customer_tree_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_customer_view_tree"/>
+            <field name="act_window" ref="act_sale_product_customer"/>
+        </record>
+        <record model="ir.action.act_window.view" id="ct_sale_product_customer_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_customer_view_form"/>
+            <field name="act_window" ref="act_sale_product_customer"/>
+        </record>
+
+        <menuitem name="Customer Products"
+            id="menu_sale_product_customer"
+            parent="product.menu_main_product" sequence="1"
+            action="act_sale_product_customer"/>
     </data>
 </tryton>

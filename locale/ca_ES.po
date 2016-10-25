@@ -36,15 +36,15 @@ msgstr "Empresa"
 
 msgctxt "field:sale.product_customer,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:sale.product_customer,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:sale.product_customer,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:sale.product_customer,name:"
 msgid "Name"
@@ -56,7 +56,7 @@ msgstr "Client"
 
 msgctxt "field:sale.product_customer,product:"
 msgid "Product"
-msgstr "Productes"
+msgstr "Producte"
 
 msgctxt "field:sale.product_customer,rec_name:"
 msgid "Name"
@@ -69,6 +69,14 @@ msgstr "Data modificació"
 msgctxt "field:sale.product_customer,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
+
+msgctxt "model:ir.action,name:act_sale_product_customer"
+msgid "Customer Products"
+msgstr "Productes de client"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_product_customer"
+msgid "Customer Products"
+msgstr "Productes de client"
 
 msgctxt "model:sale.product_customer,name:"
 msgid "Product Customer"

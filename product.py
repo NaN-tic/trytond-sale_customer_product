@@ -7,10 +7,10 @@ from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
 __all__ = ['Template', 'Product', 'ProductCustomer']
-__metaclass__ = PoolMeta
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = "product.template"
     product_customers = fields.One2Many('sale.product_customer',
         'product', 'Customers',
@@ -20,7 +20,6 @@ class Template:
                 | ~Eval('context', {}).get('company')),
             },
         depends=['active', 'salable'])
-
     customer_code = fields.Function(fields.Char('Customer Code'),
         'get_customer_fields', searcher='search_customer_field')
     customer_name = fields.Function(fields.Char('Customer Name'),
@@ -71,6 +70,7 @@ class Template:
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
     customer_code = fields.Function(fields.Char('Customer Code'),
         'get_customer_fields', searcher='search_customer_field')
@@ -118,7 +118,6 @@ class Product:
 class ProductCustomer(ModelSQL, ModelView):
     'Product Customer'
     __name__ = 'sale.product_customer'
-
     product = fields.Many2One('product.template', 'Product', required=True,
             ondelete='CASCADE', select=True)
     party = fields.Many2One('party.party', 'Customer', required=True,

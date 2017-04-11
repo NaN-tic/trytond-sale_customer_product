@@ -9,14 +9,15 @@ from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
 
-class TestCase(ModuleTestCase):
-    'Test module'
+class SaleCustomerProductTestCase(ModuleTestCase):
+    'Test Sale Customer Product module'
     module = 'sale_customer_product'
 
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCase))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            SaleCustomerProductTestCase))
     suite.addTests(doctest.DocFileSuite(
             'scenario_sale_customer_product.rst',
             setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',

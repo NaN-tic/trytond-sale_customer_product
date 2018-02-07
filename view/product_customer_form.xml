@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<form string="Product Customer">
+<form>
     <label name="product"/>
     <field name="product" colspan="3"/>
     <label name="party"/>

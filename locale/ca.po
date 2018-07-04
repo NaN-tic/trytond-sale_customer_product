@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -13,6 +13,10 @@ msgstr "Codi del client"
 msgctxt "field:product.product,customer_name:"
 msgid "Customer Name"
 msgstr "Nom del client"
+
+msgctxt "field:product.product,product_customers:"
+msgid "Customers"
+msgstr "Clients"
 
 msgctxt "field:product.template,customer_code:"
 msgid "Customer Code"
@@ -59,7 +63,7 @@ msgid "Product"
 msgstr "Producte"
 
 msgctxt "field:sale.product_customer,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:sale.product_customer,write_date:"
@@ -70,13 +74,21 @@ msgctxt "field:sale.product_customer,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "model:ir.action,name:act_sale_product_customer"
+msgctxt "model:ir.action,name:"
 msgid "Customer Products"
 msgstr "Productes de client"
 
-msgctxt "model:ir.ui.menu,name:menu_sale_product_customer"
+msgctxt "model:ir.action,name:act_product_customer_form"
+msgid "Product Customers"
+msgstr "Producte del client"
+
+msgctxt "model:ir.ui.menu,name:"
 msgid "Customer Products"
 msgstr "Productes de client"
+
+msgctxt "model:ir.ui.menu,name:menu_product_customer"
+msgid "Product Customers"
+msgstr "Producte del client"
 
 msgctxt "model:sale.product_customer,name:"
 msgid "Product Customer"

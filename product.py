@@ -153,9 +153,11 @@ class ProductCustomer(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        ids = map(int, cls.search([('code',) + tuple(clause[1:])], order=[]))
-        if ids:
-            ids += map(int,
-                cls.search([('name',) + tuple(clause[1:])], order=[]))
-            return [('id', 'in', ids)]
-        return super(ProductCustomer, cls).search_rec_name(name, clause)
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('code',) + tuple(clause[1:]),
+            ('name',) + tuple(clause[1:]),
+            ]

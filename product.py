@@ -9,8 +9,7 @@ from trytond.transaction import Transaction
 __all__ = ['Template', 'Product', 'ProductCustomer']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = "product.template"
     product_customers = fields.One2Many('sale.product_customer',
         'product', 'Customers',
@@ -69,8 +68,7 @@ class Template:
         return res
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
     customer_code = fields.Function(fields.Char('Customer Code'),
         'get_customer_fields', searcher='search_customer_field')

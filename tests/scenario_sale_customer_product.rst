@@ -150,7 +150,7 @@ Create an Inventory::
     >>> inventory_line.save()
     >>> Inventory.confirm([inventory.id], config.context)
     >>> inventory.state
-    u'done'
+    'done'
 
 Sale 5 products::
 
@@ -178,10 +178,10 @@ Sale 5 products::
     >>> Sale.confirm([sale.id], config.context)
     >>> Sale.process([sale.id], config.context)
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.reload()
     >>> sale_line.description
-    u'[1111] Customer 1 Product'
+    '[1111] Customer 1 Product'
 
 Sale 5 products::
 
@@ -209,5 +209,5 @@ Sale 5 products::
     >>> Sale.confirm([sale.id], config.context)
     >>> Sale.process([sale.id], config.context)
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.reload()

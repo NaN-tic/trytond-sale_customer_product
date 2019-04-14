@@ -174,9 +174,8 @@ Sale 5 products::
     >>> sale_line.product = product
     >>> sale_line.quantity = 3.0
     >>> sale.save()
-    >>> Sale.quote([sale.id], config.context)
-    >>> Sale.confirm([sale.id], config.context)
-    >>> Sale.process([sale.id], config.context)
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
     >>> sale.state
     'processing'
     >>> sale.reload()
@@ -205,9 +204,8 @@ Sale 5 products::
     >>> sale_line.product = product
     >>> sale_line.quantity = 3.0
     >>> sale.save()
-    >>> Sale.quote([sale.id], config.context)
-    >>> Sale.confirm([sale.id], config.context)
-    >>> Sale.process([sale.id], config.context)
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
     >>> sale.state
     'processing'
     >>> sale.reload()

@@ -4,6 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.rule.group" id="rule_group_product_customer">
+            <field name="name">Cusomer Product Company Rule</field>
             <field name="model" search="[('model', '=', 'sale.product_customer')]"/>
             <field name="global_p" eval="True"/>
         </record>

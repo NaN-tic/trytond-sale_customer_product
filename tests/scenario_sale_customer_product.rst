@@ -107,7 +107,6 @@ Create product::
     >>> template.name = 'product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
-    >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
@@ -179,8 +178,6 @@ Sale 5 products::
     >>> sale.state
     'processing'
     >>> sale.reload()
-    >>> sale_line.description
-    '[1111] Customer 1 Product'
 
 Sale 5 products::
 
